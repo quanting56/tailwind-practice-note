@@ -1,0 +1,43 @@
+/* 若有要@import字型之類的內容，要寫在"@import "tailwindcss";"之前 */
+/* @import url("https://..."); */
+
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));  /* Tailwind v4要使用dark模式需增加這一行 */
+
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
+
+@layer base {
+  body {
+    @apply bg-[#ffffafa] p-0 m-0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+@layer components {
+  .testapply {
+    @apply mt-5 text-5xl text-indigo-700 bg-amber-600
+  }
+}
+
+@layer utilities {
+  .prose-custom pre {
+    @apply bg-[#1e1e1e]
+  }
+
+  .prose-custom code:not(pre code) {
+    @apply bg-[#f4f4f4] text-[#c7254e] px-1 py-0.5 whitespace-nowrap rounded-md border border-[#e1e1e1] text-[0.85em] font-mono font-normal;
+    font-family: "Monaspace Neon", ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  }
+
+  /* 移除 .prose 預設的 `` 前後引號 */
+  .prose-custom code:not(pre code)::after,
+  .prose-custom code:not(pre code)::before {
+    content: "";
+  }
+
+  .prose-custom pre code {
+    @apply whitespace-pre-wrap
+  }
+}
