@@ -212,13 +212,184 @@ export default defineConfig({
     ]
   },
   {
-    id: "vuejsCardNote",
-    title: "一些卡片",
+    id: "tailwindCardNote",
+    title: "響應式卡片",
     description: null,
     descriptionComponent: null,
     lists: [
       {
-        listTitle: "小工具們",
+        listTitle: "成員式卡片",
+        listSubtitle: null,
+        listComponent: defineAsyncComponent(() =>
+          import("../../../components/WebNoteView/TailwindNoteView/TailwindCardNote/TailwindMemberCardDemo.vue")
+        ),
+        listCode: {
+          terminalCode: null,
+          htmlCode: null,
+          cssCode: null,
+          jsCode: null,
+          vueCode: 
+`<template>
+  <div class="font-sans p-8 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-2
+              sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6"
+  >
+    <img
+      src="../../../../assets/Kodak_Tmax400_007.jpg"
+      alt="成員照片"
+      class="block mx-auto h-24 w-24 rounded-full"
+    />
+    <div class="text-center space-y-2">
+      <div class="space-y-0.5">
+        <p class="text-lg text-black font-semibold">First Card</p>
+        <p class="text-gray-500">First content</p>
+      </div>
+      <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 cursor-pointer
+                     hover:text-white hover:bg-purple-600 hover:border-transparent
+                     focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+      >
+        click
+      </button>
+    </div>
+  </div>
+</template>
+
+<script setup></script>
+
+<style scoped></style>`
+        },
+        listDetails: [
+          {
+            detailTitle: null,
+            detailSubtitle: null,
+            detailContent: null,
+            detailComponent: null,
+            detailCode: {
+              terminalCode: null,
+              htmlCode: null,
+              cssCode: null,
+              jsCode: null,
+              vueCode: null
+            }
+          }
+        ]
+      },
+      {
+        listTitle: "文章預覽式卡片",
+        listSubtitle: null,
+        listComponent: defineAsyncComponent(() =>
+          import("../../../components/WebNoteView/TailwindNoteView/TailwindCardNote/TailwindArticleCardDemo.vue")
+        ),
+        listCode: {
+          terminalCode: null,
+          htmlCode: null,
+          cssCode: null,
+          jsCode: null,
+          vueCode: 
+`<template>
+  <div class="font-sans max-w-md md:max-w-2xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+    <div class="md:flex">
+      <div class="md:flex-shrink-0">
+        <img
+          class="h-48 md:h-full w-full md:w-48 object-cover"
+          src="../../../../assets/Kodak_Tmax400_007.jpg"
+          alt="文章照片"
+        />
+      </div>
+      <div class="p-8">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+          這是標題
+        </div>
+        <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black no-underline hover:underline">這是副標題</a>
+        <p class="mt-2 text-gray-500">
+          到今天也沒啊啊啊，好看放個。天好時候閱讀的文像然我⋯老師報名大腿，就跟的太太筆記還之類的，想哭拿到真是在他這種，最喜歡的主題購看了四可以：少了方安心了一遇舒服手機。之後我我努力都好好天都⋯大哥的背試看。意是了這些身上一個比較好直接，帽不完反我就很難這種的，來以為有在喜歡超級。上次時的好吃或者，什麼覺得也，很正果就好還，謝大家確定⋯什麼心情不到底有關係是想要家都，停根本是是我覺們家請大家。我覺都沒有，是比當天較子真時候有，太可怕設定年的加上搶文章喜歡你⋯地方給他們，點然後就好，但其會雖然不。
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup></script>
+
+<style scoped></style>`
+        },
+        listDetails: [
+          {
+            detailTitle: null,
+            detailSubtitle: null,
+            detailContent: null,
+            detailComponent: null,
+            detailCode: {
+              terminalCode: null,
+              htmlCode: null,
+              cssCode: null,
+              jsCode: null,
+              vueCode: null
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "tailwindOfficialPluginNote",
+    title: "官方套件",
+    description: null,
+    descriptionComponent: null,
+    lists: [
+      {
+        listTitle: "Typography 排版套件",
+        listSubtitle: null,
+        listComponent: null,
+        listCode: {
+          terminalCode: null,
+          htmlCode: null,
+          cssCode: null,
+          jsCode: null,
+          vueCode: null
+        },
+        listDetails: [
+          {
+            detailTitle: '<code>&lt;div class="prose"&gt; ... &lt;/div&gt;</code></small>',
+            detailSubtitle: null,
+            detailContent: null,
+            detailComponent: defineAsyncComponent(() =>
+              import("../../../components/WebNoteView/TailwindNoteView/TailwindOfficialPluginNote/TailwindPluginTypography.vue")
+            ),
+            detailCode: {
+              terminalCode: null,
+              htmlCode: null,
+              cssCode: null,
+              jsCode: null,
+              vueCode: null
+            }
+          },
+          {
+            detailTitle: '<code>&lt;div class="not-prose"&gt; ... &lt;/div&gt;</code></small>',
+            detailSubtitle: "<code>.not-prose</code> 是 Typography 官方提供的 className，會讓其內元素不受 <code>.prose</code> 預設樣式影響。",
+            detailContent: null,
+            detailComponent: null,
+            detailCode: {
+              terminalCode: null,
+              htmlCode: 
+`<div class="prose">
+  <p>這是正常的 Markdown 內容。</p>
+  <p>這裡會套用 Typography 官方提供的樣式。</p>
+
+  <div class="not-prose">
+    <YourCardComponent />
+    <p>這裡不受 Typography 套件樣式影響。</p>
+  </div>
+</div>
+`,
+              cssCode: null,
+              jsCode: null,
+              vueCode: null
+            }
+          }
+        ]
+      },
+      {
+        listTitle: "Forms 表單樣式套件",
         listSubtitle: null,
         listComponent: null,
         listCode: {
@@ -264,8 +435,8 @@ export default defineConfig({
     ]
   },
   {
-    id: "vuejsSomeInterestingNote",
-    title: "一些卡片",
+    id: "tailwind???Note",
+    title: "？？？",
     description: null,
     descriptionComponent: null,
     lists: [
