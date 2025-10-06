@@ -1,9 +1,9 @@
 <template>
-  <div class="max-w-8xl">
+  <div class="max-w-7xl">
     <!-- 整體分欄：左側 Nav, 右側 Content -->
     <div class="flex flex-col gap-5 mb-8 lg:flex-row">
       <!-- 左側分頁列 -->
-      <nav class="flex-none basis-[200px] lg:mb-4">
+      <nav class="flex-none lg:min-w-[200px] lg:mb-4">
         <ul class="
           list-none p-0 m-0 flex flex-wrap gap-2
           lg:flex-col lg:gap-0
@@ -32,7 +32,7 @@
       >
         <section v-if="currentTab" :key="currentTab.id" class="prose prose-custom">
           <h3 class="text-2xl mt-0 mb-2">{{ currentTab.title }}</h3>
-          <hr />
+          <hr class="mb-3"/>
 
           <!-- 總說明 -->
           <div
@@ -69,7 +69,7 @@
 
               <!-- 大項程式碼 -->
               <div
-                v-if="list.listCode.terminalCode || list.listCode.htmlCode || list.listCode.jsCode || list.listCode.vueCode"
+                v-if="list.listCode.terminalCode || list.listCode.htmlCode || list.listCode.cssCode || list.listCode.jsCode || list.listCode.vueCode"
                 class="code"
               >
                 <template v-if="list.listCode.terminalCode">
@@ -82,14 +82,19 @@
                   <pre><code class="html">{{ list.listCode.htmlCode }}</code></pre>
                 </template>
 
+                <template v-if="list.listCode.cssCode">
+                  <!-- css code: -->
+                  <pre><code class="language-css">{{ list.listCode.cssCode }}</code></pre>
+                </template>
+
                 <template v-if="list.listCode.jsCode">
                   <!-- javascript code: -->
                   <pre><code class="javascript">{{ list.listCode.jsCode }}</code></pre>
                 </template>
 
-                <template v-if="list.listCode.vueSFCCode">
+                <template v-if="list.listCode.vueCode">
                   Vue 3 SFC（使用Composition API）這樣寫：
-                  <pre><code class="html">{{ list.listCode.vueSFCCode }}</code></pre>
+                  <pre><code class="html">{{ list.listCode.vueCode }}</code></pre>
                 </template>
               </div>
 
@@ -123,7 +128,7 @@
 
                   <!-- 小項程式碼 -->
                   <div
-                    v-if="detail.detailCode.terminalCode || detail.detailCode.htmlCode || detail.detailCode.jsCode || detail.detailCode.vueCode"
+                    v-if="detail.detailCode.terminalCode || detail.detailCode.htmlCode || detail.detailCode.cssCode || detail.detailCode.jsCode || detail.detailCode.vueCode"
                     class="code"
                   >
                     <template v-if="detail.detailCode.terminalCode">
@@ -136,14 +141,19 @@
                       <pre><code class="html">{{ detail.detailCode.htmlCode }}</code></pre>
                     </template>
 
+                    <template v-if="detail.detailCode.cssCode">
+                      <!-- css code: -->
+                      <pre><code class="language-css">{{ detail.detailCode.cssCode }}</code></pre>
+                    </template>
+
                     <template v-if="detail.detailCode.jsCode">
                       <!-- javascript code: -->
                       <pre><code class="javascript">{{ detail.detailCode.jsCode }}</code></pre>
                     </template>
 
-                    <template v-if="detail.detailCode.vueSFCCode">
+                    <template v-if="detail.detailCode.vueCode">
                       Vue 3 SFC（使用Composition API）這樣寫：
-                      <pre><code class="html">{{ detail.detailCode.vueSFCCode }}</code></pre>
+                      <pre><code class="html">{{ detail.detailCode.vueCode }}</code></pre>
                     </template>
                   </div>
                 </li>
@@ -172,13 +182,15 @@ const currentTab = computed(() => {
 
 // 預先 import Highlight.js
 import hljs from "highlight.js/lib/core";
-import html from "highlight.js/lib/languages/xml";
-import javascript from "highlight.js/lib/languages/javascript";
 import bash from "highlight.js/lib/languages/bash";
+import html from "highlight.js/lib/languages/xml";
+import css from "highlight.js/lib/languages/css"
+import javascript from "highlight.js/lib/languages/javascript";
 import "highlight.js/styles/vs2015.css";
-hljs.registerLanguage("html", html);
-hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("bash", bash);
+hljs.registerLanguage("html", html);
+hljs.registerLanguage("css", css);
+hljs.registerLanguage("javascript", javascript);
 
 // 每次切換後重新 highlight
 onMounted(() => {

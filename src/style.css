@@ -17,15 +17,20 @@
 
 @layer components {
   .testapply {
-    @apply mt-5 text-5xl text-indigo-700 bg-amber-600
+    @apply mt-5 text-5xl text-indigo-700 bg-amber-600;
   }
 }
 
 @layer utilities {
-  .prose-custom pre {
-    @apply bg-[#1e1e1e]
+  .prose-custom {
+    @apply max-w-full;
   }
 
+  .prose-custom pre {
+    @apply bg-[#1e1e1e] mt-2;
+  }
+
+  /* 非code呈現區域不會有 */
   .prose-custom code:not(pre code) {
     @apply bg-[#f4f4f4] text-[#c7254e] px-1 py-0.5 whitespace-nowrap rounded-md border border-[#e1e1e1] text-[0.85em] font-mono font-normal;
     font-family: "Monaspace Neon", ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
@@ -37,7 +42,8 @@
     content: "";
   }
 
+  /* code呈現的地方不會超出頁面寬度 */
   .prose-custom pre code {
-    @apply whitespace-pre-wrap
+    @apply whitespace-pre-wrap;
   }
 }

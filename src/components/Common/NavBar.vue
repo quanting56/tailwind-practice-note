@@ -42,8 +42,8 @@
       ></span>
     </button>
 
-    <!-- Main Nav -->
-    <ul
+    <!-- Main Nav（暫未使用，要使用的話再打開） -->
+    <!-- <ul
       :class="[
         'list-none flex-col bg-[#333333] absolute top-full right-3 m-0 p-2.5 border border-gray-800 w-[calc(100%-24px)] box-border gap-2 items-center',
         'md:flex md:flex-row md:static md:border-none md:w-auto md:p-0 md:pl-2',
@@ -56,7 +56,7 @@
         @mouseleave="handleMouseLeave(item)"
         class="relative"
       >
-        <!-- 單一連結（沒有 children） -->
+        <!- 單一連結（沒有 children） ->
         <router-link
           v-if="!item.children"
           :to="item.to"
@@ -65,7 +65,7 @@
           {{ item.title }}
         </router-link>
 
-        <!-- Dropdown -->
+        <!- Dropdown ->
         <div v-else>
           <div
             role="button"
@@ -90,7 +90,7 @@
                 v-if="child.divider"
                 role="separator"
                 class="h-px bg-gray-500 mx-0 my-1"
-              ></li>  <!-- 分隔線 -->
+              ></li>  <!- 分隔線 ->
 
               <li
                 v-else-if="child.header"
@@ -101,7 +101,7 @@
               </li>
 
               <li v-else role="menuitem">
-                <!-- 以 '/' 開頭視為內部路由 (可依需求調整判斷條件) -->
+                <!- 以 '/' 開頭視為內部路由 (可依需求調整判斷條件) ->
                 <router-link
                   v-if="child.href && child.href.startsWith('/')"
                   :to="child.href"
@@ -124,7 +124,7 @@
           </ul>
         </div>
       </li>
-    </ul>
+    </ul> -->
   </nav>
 </template>
 
