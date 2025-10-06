@@ -1,0 +1,1 @@
+var e=`/tailwind-practice-note/assets/Kodak_Tmax400_007-DMbd02mD.jpg`;export{e as t};
