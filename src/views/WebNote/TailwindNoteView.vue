@@ -30,7 +30,7 @@
         mode="out-in"
         @after-enter="handleHighlight"
       >
-        <section v-if="currentTab" :key="currentTab.id" class="prose prose-custom">
+        <section v-if="currentTab" :key="currentTab.id" class="prose prose-custom w-full">
           <h3 class="text-2xl mt-0 mb-2">{{ currentTab.title }}</h3>
           <hr class="mb-3"/>
 
@@ -174,7 +174,7 @@ import { tailwindNoteViewTabs } from "../../data/web-note-view/tailwind-note-vie
 const tabs = tailwindNoteViewTabs;
 
 // 處理 tab 切換
-const activeTab = ref(tabs[2].id);
+const activeTab = ref(tabs[3].id);
 const currentTab = computed(() => {
   return tabs.find(t => t.id === activeTab.value) || tabs[0];
 });

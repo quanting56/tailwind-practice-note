@@ -333,7 +333,7 @@ export default defineConfig({
   {
     id: "tailwindOfficialPluginNote",
     title: "官方套件",
-    description: null,
+    description: "這裡以 Typography 和 Forms 做舉例。",
     descriptionComponent: null,
     lists: [
       {
@@ -350,17 +350,58 @@ export default defineConfig({
         listDetails: [
           {
             detailTitle: '<code>&lt;div class="prose"&gt; ... &lt;/div&gt;</code></small>',
-            detailSubtitle: null,
+            detailSubtitle: "樣式僅供參考，實際使用可能略有不同。下方灰框表示 <code>.prose</code> 作用範圍。",
             detailContent: null,
             detailComponent: defineAsyncComponent(() =>
-              import("../../../components/WebNoteView/TailwindNoteView/TailwindOfficialPluginNote/TailwindPluginTypography.vue")
+              import("../../../components/WebNoteView/TailwindNoteView/TailwindOfficialPluginNote/TailwindPluginTypographyDemo.vue")
             ),
             detailCode: {
               terminalCode: null,
               htmlCode: null,
               cssCode: null,
               jsCode: null,
-              vueCode: null
+              vueCode: 
+`<template>
+  <!-- .prose-wrapper目的在給灰框顯示此SFC作用範圍（其為自訂樣式） */ -->
+  <div class="prose-wrapper">
+    <article class="prose">
+      <h1>Tailwind Typography 範例</h1>
+      <p>
+        這是一段示範文字，Typography plugin 會自動幫你設定行高、字體大小、段落間距。
+      </p>
+      <h2>子標題</h2>
+      <ul>
+        <li>清單項目一</li>
+        <li>清單項目二</li>
+        <li>清單項目三</li>
+      </ul>
+      <pre><code>
+        &lt;!-- 實際上 code 區域底色會再淺一點 --&gt;
+        &lt;script&gt;
+          const add(a, b) {
+            return a + b;
+          };
+  
+          console.log(add(2 + 3));
+        &lt;/script&gt;
+      </code></pre>
+      <blockquote>
+        這是一段引用文字，看起來會有縮排與斜體樣式。
+      </blockquote>
+    </article>
+  </div>
+</template>
+
+<script setup></script>
+
+<style scoped>
+@reference "tailwindcss";
+
+/* .prose-wrapper為自訂樣式，目的在給灰框顯示此SFC作用範圍 */
+.prose-wrapper {
+  @apply border border-gray-300;
+}
+</style>`
             }
           },
           {
@@ -401,27 +442,148 @@ export default defineConfig({
         },
         listDetails: [
           {
-            detailTitle: "ToDo List",
-            detailSubtitle: null,
+            detailTitle: "一些基本表單元素",
+            detailSubtitle: "這個套件不像 Typography，不需額外用在 <code>class</code> 中加上特定 className，只要該專案有使用此套件，即會全域套用。",
             detailContent: null,
-            // detailComponent: defineAsyncComponent(() =>
-            //   import("../../../components/WebNoteView/VuejsNoteView/VuejsSomeInterestingNote/ToDoApp.vue")
-            // ),
+            detailComponent: defineAsyncComponent(() =>
+              import("../../../components/WebNoteView/TailwindNoteView/TailwindOfficialPluginNote/TailwindPluginBasicFormDemo.vue")
+            ),
             detailCode: {
               terminalCode: null,
               htmlCode: null,
               cssCode: null,
               jsCode: null,
-              vueCode: null
+              vueCode: 
+`<template>
+  <form>
+    <div class="ml-5 sm:w-96">
+      <label class="block mb-3">
+        <input type="text" class="w-full rounded-md" placeholder="請輸入姓名" />
+      </label>
+
+      <label class="block mb-3">
+        <input type="checkbox" />
+        <span class="pl-2">複選題</span>
+      </label>
+
+      <label class="block mb-3">
+        <input type="radio" />
+        <span class="pl-2">單選題</span>
+      </label>
+
+      <label class="block mb-3">
+        <input type="date" class="w-full rounded-md" />
+      </label>
+
+      <label class="block mb-3">
+        <input type="email" class="w-full rounded-md" placeholder="name@email.com" />
+      </label>
+
+      <label class="block mb-3">
+        <select class="w-full rounded-md">
+          <option value="">-- 請選擇 --</option>
+          <option value="1">-- 項目一 --</option>
+          <option value="2">-- 項目二 --</option>
+        </select>
+      </label>
+
+      <label class="block">
+        <textarea cols="30" rows="10" class="w-full rounded-md" placeholder="在想些什麼..."></textarea>
+      </label>
+    </div>
+  </form>
+</template>
+
+<script setup></script>
+
+<style scoped></style>`
             }
           },
           {
-            detailTitle: "複利計算器",
+            detailTitle: "登入頁面",
             detailSubtitle: null,
             detailContent: null,
-            // detailComponent: defineAsyncComponent(() =>
-            //   import("../../../components/WebNoteView/VuejsNoteView/VuejsSomeInterestingNote/CompoundInterestCalculator/CompoundInterestCalculator.vue")
-            // ),
+            detailComponent: defineAsyncComponent(() =>
+              import("../../../components/WebNoteView/TailwindNoteView/TailwindOfficialPluginNote/TailwindPluginLoginPageDemo.vue")
+            ),
+            detailCode: {
+              terminalCode: null,
+              htmlCode: null,
+              cssCode: null,
+              jsCode: null,
+              vueCode: 
+`<template>
+  <form class="space-y-4">
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+      <input
+        id="email"
+        type="email" 
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+               focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      />
+    </div>
+  
+    <div>
+      <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+      <input
+        id="password"
+        type="password"
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+               focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      />
+    </div>
+  
+    <div>
+      <label class="inline-flex items-center">
+        <input type="checkbox" class="rounded text-indigo-600 focus:ring-indigo-500" />
+        <span class="ml-2">Remember me</span>
+      </label>
+    </div>
+  
+    <button
+      type="submit" 
+      class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+    >
+      登入
+    </button>
+  </form>
+</template>
+
+<script setup></script>
+
+<style scoped></style>`
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "tailwindDarkModeNote",
+    title: "Dark Mode",
+    description: null,
+    descriptionComponent: null,
+    lists: [
+      {
+        listTitle: "一個例子",
+        listSubtitle: null,
+        listComponent: defineAsyncComponent(() =>
+          import("../../../components/WebNoteView/TailwindNoteView/TailwindDarkModeNote/TailwindDarkModeDemo.vue")
+        ),
+        listCode: {
+          terminalCode: null,
+          htmlCode: null,
+          cssCode: null,
+          jsCode: null,
+          vueCode: null
+        },
+        listDetails: [
+          {
+            detailTitle: null,
+            detailSubtitle: null,
+            detailContent: null,
+            detailComponent: null,
             detailCode: {
               terminalCode: null,
               htmlCode: null,
@@ -458,21 +620,6 @@ export default defineConfig({
             detailContent: null,
             // detailComponent: defineAsyncComponent(() =>
             //   import("../../../components/WebNoteView/VuejsNoteView/VuejsSomeInterestingNote/ToDoApp.vue")
-            // ),
-            detailCode: {
-              terminalCode: null,
-              htmlCode: null,
-              cssCode: null,
-              jsCode: null,
-              vueCode: null
-            }
-          },
-          {
-            detailTitle: "複利計算器",
-            detailSubtitle: null,
-            detailContent: null,
-            // detailComponent: defineAsyncComponent(() =>
-            //   import("../../../components/WebNoteView/VuejsNoteView/VuejsSomeInterestingNote/CompoundInterestCalculator/CompoundInterestCalculator.vue")
             // ),
             detailCode: {
               terminalCode: null,
