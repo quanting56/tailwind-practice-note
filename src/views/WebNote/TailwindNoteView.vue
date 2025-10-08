@@ -63,7 +63,7 @@
               ></div>
 
               <!-- 匯入大項元件 -->
-              <div v-if="list.listComponent" class="p-4 mb-2 not-prose">
+              <div v-if="list.listComponent" class="p-4 mb-2 not-prose font-sans">
                 <component :is="list.listComponent"></component>
               </div>
 
@@ -122,7 +122,7 @@
                   ></div>
 
                   <!-- 匯入小項元件 -->
-                  <div v-if="detail.detailComponent" class="p-4 mb-2 not-prose">
+                  <div v-if="detail.detailComponent" class="p-4 mb-2 not-prose font-sans">
                     <component :is="detail.detailComponent"></component>
                   </div>
 
@@ -174,7 +174,7 @@ import { tailwindNoteViewTabs } from "../../data/web-note-view/tailwind-note-vie
 const tabs = tailwindNoteViewTabs;
 
 // 處理 tab 切換
-const activeTab = ref(tabs[3].id);
+const activeTab = ref(tabs[5].id);
 const currentTab = computed(() => {
   return tabs.find(t => t.id === activeTab.value) || tabs[0];
 });

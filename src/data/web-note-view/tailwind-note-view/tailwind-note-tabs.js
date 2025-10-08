@@ -212,125 +212,6 @@ export default defineConfig({
     ]
   },
   {
-    id: "tailwindCardNote",
-    title: "響應式卡片",
-    description: null,
-    descriptionComponent: null,
-    lists: [
-      {
-        listTitle: "成員式卡片",
-        listSubtitle: null,
-        listComponent: defineAsyncComponent(() =>
-          import("../../../components/WebNoteView/TailwindNoteView/TailwindCardNote/TailwindMemberCardDemo.vue")
-        ),
-        listCode: {
-          terminalCode: null,
-          htmlCode: null,
-          cssCode: null,
-          jsCode: null,
-          vueCode: 
-`<template>
-  <div class="font-sans p-8 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-2
-              sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6"
-  >
-    <img
-      src="../../../../assets/Kodak_Tmax400_007.jpg"
-      alt="成員照片"
-      class="block mx-auto h-24 w-24 rounded-full"
-    />
-    <div class="text-center space-y-2">
-      <div class="space-y-0.5">
-        <p class="text-lg text-black font-semibold">First Card</p>
-        <p class="text-gray-500">First content</p>
-      </div>
-      <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 cursor-pointer
-                     hover:text-white hover:bg-purple-600 hover:border-transparent
-                     focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
-      >
-        click
-      </button>
-    </div>
-  </div>
-</template>
-
-<script setup></script>
-
-<style scoped></style>`
-        },
-        listDetails: [
-          {
-            detailTitle: null,
-            detailSubtitle: null,
-            detailContent: null,
-            detailComponent: null,
-            detailCode: {
-              terminalCode: null,
-              htmlCode: null,
-              cssCode: null,
-              jsCode: null,
-              vueCode: null
-            }
-          }
-        ]
-      },
-      {
-        listTitle: "文章預覽式卡片",
-        listSubtitle: null,
-        listComponent: defineAsyncComponent(() =>
-          import("../../../components/WebNoteView/TailwindNoteView/TailwindCardNote/TailwindArticleCardDemo.vue")
-        ),
-        listCode: {
-          terminalCode: null,
-          htmlCode: null,
-          cssCode: null,
-          jsCode: null,
-          vueCode: 
-`<template>
-  <div class="font-sans max-w-md md:max-w-2xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-    <div class="md:flex">
-      <div class="md:flex-shrink-0">
-        <img
-          class="h-48 md:h-full w-full md:w-48 object-cover"
-          src="../../../../assets/Kodak_Tmax400_007.jpg"
-          alt="文章照片"
-        />
-      </div>
-      <div class="p-8">
-        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-          這是標題
-        </div>
-        <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black no-underline hover:underline">這是副標題</a>
-        <p class="mt-2 text-gray-500">
-          到今天也沒啊啊啊，好看放個。天好時候閱讀的文像然我⋯老師報名大腿，就跟的太太筆記還之類的，想哭拿到真是在他這種，最喜歡的主題購看了四可以：少了方安心了一遇舒服手機。之後我我努力都好好天都⋯大哥的背試看。意是了這些身上一個比較好直接，帽不完反我就很難這種的，來以為有在喜歡超級。上次時的好吃或者，什麼覺得也，很正果就好還，謝大家確定⋯什麼心情不到底有關係是想要家都，停根本是是我覺們家請大家。我覺都沒有，是比當天較子真時候有，太可怕設定年的加上搶文章喜歡你⋯地方給他們，點然後就好，但其會雖然不。
-        </p>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script setup></script>
-
-<style scoped></style>`
-        },
-        listDetails: [
-          {
-            detailTitle: null,
-            detailSubtitle: null,
-            detailContent: null,
-            detailComponent: null,
-            detailCode: {
-              terminalCode: null,
-              htmlCode: null,
-              cssCode: null,
-              jsCode: null,
-              vueCode: null
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
     id: "tailwindOfficialPluginNote",
     title: "官方套件",
     description: "這裡以 Typography 和 Forms 做舉例。",
@@ -587,7 +468,12 @@ export default defineConfig({
               htmlCode: null,
               cssCode: 
 `@import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));  /* 要啟用Tailwind v4 dark樣式的class模式需增加這一行，否則會是media模式（依瀏覽器決定是否啟用dark樣式） */
+
+/* 啟用Tailwind v4的dark模式（class模式） */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 若未加入上行，Tailwind會預設使用media模式，依瀏覽器（或系統主題）自動切換 */
+
 
 @plugin " ... ";
 
@@ -644,7 +530,7 @@ export default defineConfig({
           {
             detailTitle: "<code>media</code> 模式",
             detailSubtitle: null,
-            detailContent: "是否啟用 dark 樣式，依瀏覽器設定的外觀模式決定。",
+            detailContent: '是否啟用 dark 樣式，依瀏覽器設定的外觀模式決定，不需額外添加 <code>class="dark"</code>。',
             detailComponent: null,
             detailCode: {
               terminalCode: null,
@@ -762,25 +648,109 @@ const setDarkMode = () => {
     ]
   },
   {
-    id: "tailwindBulletinBoardNote",
-    title: "佈告欄",
+    id: "tailwindCardNote",
+    title: "響應式卡片",
     description: null,
     descriptionComponent: null,
     lists: [
       {
-        listTitle: "留言板",
+        listTitle: "成員式卡片",
         listSubtitle: null,
-        listComponent: null,
+        listComponent: defineAsyncComponent(() =>
+          import("../../../components/WebNoteView/TailwindNoteView/TailwindCardNote/TailwindMemberCardDemo.vue")
+        ),
         listCode: {
           terminalCode: null,
           htmlCode: null,
           cssCode: null,
           jsCode: null,
-          vueCode: null
+          vueCode: 
+`<template>
+  <div class="p-8 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-2
+              sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6"
+  >
+    <img
+      src="../../../../assets/Kodak_Tmax400_007.jpg"
+      alt="成員照片"
+      class="block mx-auto h-24 w-24 rounded-full"
+    />
+    <div class="text-center space-y-2">
+      <div class="space-y-0.5">
+        <p class="text-lg text-black font-semibold">First Card</p>
+        <p class="text-gray-500">First content</p>
+      </div>
+      <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 cursor-pointer
+                     hover:text-white hover:bg-purple-600 hover:border-transparent
+                     focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+      >
+        click
+      </button>
+    </div>
+  </div>
+</template>
+
+<script setup></script>
+
+<style scoped></style>`
         },
         listDetails: [
           {
-            detailTitle: "ToDo List",
+            detailTitle: null,
+            detailSubtitle: null,
+            detailContent: null,
+            detailComponent: null,
+            detailCode: {
+              terminalCode: null,
+              htmlCode: null,
+              cssCode: null,
+              jsCode: null,
+              vueCode: null
+            }
+          }
+        ]
+      },
+      {
+        listTitle: "文章預覽式卡片",
+        listSubtitle: null,
+        listComponent: defineAsyncComponent(() =>
+          import("../../../components/WebNoteView/TailwindNoteView/TailwindCardNote/TailwindArticleCardDemo.vue")
+        ),
+        listCode: {
+          terminalCode: null,
+          htmlCode: null,
+          cssCode: null,
+          jsCode: null,
+          vueCode: 
+`<template>
+  <div class="max-w-md md:max-w-2xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+    <div class="md:flex">
+      <div class="md:flex-shrink-0">
+        <img
+          class="h-48 md:h-full w-full md:w-48 object-cover"
+          src="../../../../assets/Kodak_Tmax400_007.jpg"
+          alt="文章照片"
+        />
+      </div>
+      <div class="p-8">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+          這是標題
+        </div>
+        <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black no-underline hover:underline">這是副標題</a>
+        <p class="mt-2 text-gray-500">
+          到今天也沒啊啊啊，好看放個。天好時候閱讀的文像然我⋯老師報名大腿，就跟的太太筆記還之類的，想哭拿到真是在他這種，最喜歡的主題購看了四可以：少了方安心了一遇舒服手機。之後我我努力都好好天都⋯大哥的背試看。意是了這些身上一個比較好直接，帽不完反我就很難這種的，來以為有在喜歡超級。上次時的好吃或者，什麼覺得也，很正果就好還，謝大家確定⋯什麼心情不到底有關係是想要家都，停根本是是我覺們家請大家。我覺都沒有，是比當天較子真時候有，太可怕設定年的加上搶文章喜歡你⋯地方給他們，點然後就好，但其會雖然不。
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup></script>
+
+<style scoped></style>`
+        },
+        listDetails: [
+          {
+            detailTitle: null,
             detailSubtitle: null,
             detailContent: null,
             detailComponent: null,
@@ -797,30 +767,266 @@ const setDarkMode = () => {
     ]
   },
   {
-    id: "tailwind???Note",
-    title: "？？？",
+    id: "tailwindBulletinBoardNote",
+    title: "佈告欄",
     description: null,
     descriptionComponent: null,
     lists: [
       {
-        listTitle: "小工具們",
-        listSubtitle: null,
-        listComponent: null,
+        listTitle: "留言板",
+        listSubtitle: "全螢幕的留言板範本（因為此處 Dome 區域寬度不足而無法以全螢幕完全呈現）。",
+        listComponent: defineAsyncComponent(() =>
+          import("../../../components/WebNoteView/TailwindNoteView/TailwindBulletinBoardNote/TailwindMessageBoardDemo.vue")
+        ),
         listCode: {
           terminalCode: null,
           htmlCode: null,
           cssCode: null,
           jsCode: null,
-          vueCode: null
+          vueCode: 
+`<template>
+  <div class="w-full min-h-screen bg-gray-200 flex items-center justify-center">
+    <div class="w-[800px]">
+      <h1 class="block text-3xl font-bold py-8">寫一個留言版型</h1>
+      <div class="w-full flex justify-center items-center">
+        <img
+          class="w-14 h-14 mr-4 rounded-full"
+          src="../../../../assets/Kodak_Tmax400_007.jpg" alt="圖片"
+        />
+        <input
+          class="w-[600px] p-4 rounded-md mr-3"
+          type="text" placeholder="請留言"
+        />
+        <button class="px-10 py-4 bg-blue-500 rounded-md text-white hover:bg-blue-300 duration-300 cursor-pointer">
+          發佈
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup></script>
+
+<style scoped></style>`
         },
         listDetails: [
           {
-            detailTitle: "ToDo List",
+            detailTitle: null,
             detailSubtitle: null,
             detailContent: null,
-            // detailComponent: defineAsyncComponent(() =>
-            //   import("../../../components/WebNoteView/VuejsNoteView/VuejsSomeInterestingNote/ToDoApp.vue")
-            // ),
+            detailComponent: null,
+            detailCode: {
+              terminalCode: null,
+              htmlCode: null,
+              cssCode: null,
+              jsCode: null,
+              vueCode: null
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "tailwindLoginPageNote",
+    title: "登入頁面",
+    description: null,
+    descriptionComponent: null,
+    lists: [
+      {
+        listTitle: "全螢幕登入頁面",
+        listSubtitle: "全螢幕的登入頁面範本（因為此處 Dome 區域寬度不足而無法以全螢幕完全呈現）。",
+        listComponent: defineAsyncComponent(() =>
+          import("../../../components/WebNoteView/TailwindNoteView/TailwindLoginPageNote/TailwindFullScreenLoginPageDemo.vue")
+        ),
+        listCode: {
+          terminalCode: null,
+          htmlCode: 
+`<!-- 純html近似寫法 -->
+<div class="relative">
+  <div
+    id="loginModal"
+    class="absolute top-0 left-0 w-full min-h-screen flex justify-center items-center bg-gray-900/70 opacity-0 pointer-events-none"
+  >
+    <div class="w-[90%] sm:w-[50%] lg:w-[30%] p-4 bg-white rounded-md shadow-md duration-300">
+      <h2 class="text-center text-purple-600 font-bold mb-10 text-3xl">登入您的帳號</h2>
+      <p class="mb-2">電子信箱</p>
+      <input
+        type="email"
+        class="border-2 border-gray-400 focus:ring-2 w-full rounded-md"
+      />
+      <p class="mt-4 mb-2">密碼</p>
+      <input
+        type="password"
+        class="border-2 border-gray-400 focus:ring-2 w-full rounded-md"
+      />
+      <a
+        href="javascript:void(0)"
+        class="block mt-2 text-blue-400"
+      >
+        忘記密碼
+      </a>
+      <div class="flex gap-3.5">
+        <button
+          id="closeLoginBtn"
+          class="w-full bg-purple-500 hover:bg-purple-700 active:bg-purple-800 active:ring-2 ring-purple-400 ring-offset-2 duration-200 py-3 text-lg text-white tracking-wide rounded-lg mt-4 cursor-pointer"
+        >
+          取消
+        </button>
+        <button
+          class="w-full bg-purple-600 hover:bg-purple-800 active:bg-purple-900 active:ring-2 ring-purple-400 ring-offset-2 duration-200 py-3 text-lg text-white tracking-wide rounded-lg mt-4 cursor-pointer"
+        >
+          登入
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="w-full min-h-screen bg-gray-200 flex items-center justify-center">
+  <div class="w-[800px] flex flex-col items-center">
+    <h1 class="block text-3xl font-bold py-8">點按 登入 跳出登入介面</h1>
+    <button
+      id="openLoginBtn"
+      class="px-10 py-4 bg-blue-500 rounded-md text-white hover:bg-blue-300 active:bg-blue-400 duration-300 cursor-pointer"
+    >
+      登入
+    </button>
+  </div>
+</div>
+
+<script>
+  const openLoginBtn = document.getElementById("openLoginBtn");
+  const closeLoginBtn = document.getElementById("closeLoginBtn");
+  const loginModal = document.getElementById("loginModal");
+
+  openLoginBtn.addEventListener("click", () => {
+    loginModal.classList.remove("opacity-0", "pointer-events-none")
+  });
+
+  closeLoginBtn.addEventListener("click", () => {
+    loginModal.classList.add("opacity-0", "pointer-events-none")
+  });
+</script>`,
+          cssCode: null,
+          jsCode: null,
+          vueCode: 
+`<template>
+  <div class="w-full min-h-screen bg-gray-200 flex items-center justify-center">
+    <div class="w-[800px] flex flex-col items-center">
+      <h1 class="block text-3xl font-bold py-8">點按 登入 跳出登入介面</h1>
+      <button
+        @click="openModal"
+        class="px-10 py-4 bg-blue-500 rounded-md text-white hover:bg-blue-300 active:bg-blue-400 duration-300 cursor-pointer active:ring-2 ring-blue-400 ring-offset-2"
+      >
+        登入
+      </button>
+    </div>
+  </div>
+
+  <Teleport to="body">
+    <div
+      v-if="showModal"
+      @click.self="closeModal"
+      class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900/70 z-[9999]"
+    >
+      <div class="w-[90%] sm:w-[50%] lg:w-[30%] p-4 bg-white rounded-md shadow-md duration-300">
+        <button
+          @click="closeModal"
+          class="absolute top-5 right-5 text-gray-400 hover:text-gray-200 active:text-gray-700 text-5xl font-bold leading-none cursor-pointer"
+        >
+          &times;
+        </button>
+
+        <h2 class="text-center text-purple-600 font-bold mb-10 text-3xl">
+          登入您的帳號
+        </h2>
+
+        <p class="mb-2">電子信箱</p>
+        <input
+          v-model="email"
+          type="email"
+          class="border-2 border-gray-400 focus:ring-2 w-full rounded-md"
+        />
+
+        <p class="mt-4 mb-2">密碼</p>
+        <input
+          v-model="password"
+          type="password"
+          class="border-2 border-gray-400 focus:ring-2 w-full rounded-md"
+        />
+
+        <a
+          href="javascript:void(0)"
+          class="block mt-2 text-blue-400"
+        >
+          忘記密碼
+        </a>
+
+        <div class="flex gap-3.5">
+          <button
+            @click="closeModal"
+            class="w-full bg-purple-500 hover:bg-purple-700 active:bg-purple-800 active:ring-2 ring-purple-400 ring-offset-2 duration-200 py-3 text-lg text-white tracking-wide rounded-lg mt-4 cursor-pointer"
+          >
+            取消
+          </button>
+
+          <button
+            @click="login"
+            class="w-full bg-purple-600 hover:bg-purple-800 active:bg-purple-900 active:ring-2 ring-purple-400 ring-offset-2 duration-200 py-3 text-lg text-white tracking-wide rounded-lg mt-4 cursor-pointer"
+          >
+            登入
+          </button>
+        </div>
+      </div>
+    </div>
+  </Teleport>
+</template>
+
+<script setup>
+import { Teleport, ref, onMounted, onBeforeUnmount } from "vue";
+
+const showModal = ref(false);
+const email = ref("");
+const password = ref("");
+
+const openModal = () => {
+  showModal.value = true;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+};
+
+const login = () => {` + "\n" +
+'  alert(`登入中...\\nEmail: ${email.value}\\nPassword: ${password.value}`)' + "\n" +
+`  closeModal();
+};
+
+
+// 監聽Esc鍵
+const handleKeydown = (e) => {
+  if (e.key === "Escape" && showModal.value) {
+    closeModal();
+  };
+};
+
+onMounted(() => {
+  window.addEventListener("keydown", handleKeydown);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", handleKeydown);
+});
+</script>
+
+<style scoped></style>`
+        },
+        listDetails: [
+          {
+            detailTitle: null,
+            detailSubtitle: null,
+            detailContent: null,
+            detailComponent: null,
             detailCode: {
               terminalCode: null,
               htmlCode: null,
