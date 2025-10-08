@@ -174,7 +174,7 @@ import { tailwindNoteViewTabs } from "../../data/web-note-view/tailwind-note-vie
 const tabs = tailwindNoteViewTabs;
 
 // 處理 tab 切換
-const activeTab = ref(tabs[3].id);
+const activeTab = ref(tabs[6].id);
 const currentTab = computed(() => {
   return tabs.find(t => t.id === activeTab.value) || tabs[0];
 });

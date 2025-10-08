@@ -2,7 +2,8 @@
   <div class="w-full p-4">
     <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <li
-        v-for="card in cards"
+        v-for="(card, index) in cards"
+        :key="index"
         class="bg-white shadow-lg rounded-3xl overflow-hidden hover:bg-yellow-100 hover:-translate-y-3 duration-300"
       >
         <div class="overflow-hidden">

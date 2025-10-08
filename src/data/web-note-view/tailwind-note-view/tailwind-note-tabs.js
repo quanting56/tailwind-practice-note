@@ -650,7 +650,7 @@ const setDarkMode = () => {
   {
     id: "tailwindCardNote",
     title: "響應式卡片",
-    description: null,
+    description: "包含「放在首頁的卡片」、「成員式卡片」、「文章預覽式卡片」。",
     descriptionComponent: null,
     lists: [
       {
@@ -664,7 +664,60 @@ const setDarkMode = () => {
           htmlCode: null,
           cssCode: null,
           jsCode: null,
-          vueCode: null
+          vueCode: 
+`<template>
+  <div class="w-full p-4">
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <li
+        v-for="(card, index) in cards"
+        :key="index"
+        class="bg-white shadow-lg rounded-3xl overflow-hidden hover:bg-yellow-100 hover:-translate-y-3 duration-300"
+      >
+        <div class="overflow-hidden">
+          <img
+            class="hover:scale-125 duration-300"
+            :src="card.img" alt="測試卡片圖片1"
+          />
+        </div>
+        <div class="p-4">
+          <h2 class="text-purple-500 text-2xl mb-3 tracking-wide">{{ card.title }}</h2>
+          <p class="text-gray-500 leading-5 mb-3">{{ card.content }}</p>
+          <button
+            type="button"
+            class="block ml-auto bg-purple-600 text-white text-xl py-2 px-8 rounded-full cursor-pointer hover:bg-purple-800 duration-300"
+          >
+            click
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script setup>
+// Vite 的批次導入工具（batch import），適合用來載入靜態資源
+const images = import.meta.glob("../../../../assets/*", { eager: true, as: "url"});
+
+const cards = [
+  {
+    title: "Lorem ipsum",
+    content: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae nisi culpa nobis molestiae, nesciunt corporis cupiditate commodi maxime modi impedit blanditiis, voluptates, nostrum consequuntur sunt! Perferendis quisquam numquam totam placeat.",
+    img: images["../../../../assets/Kodak_Tmax400_007.jpg"]
+  },
+  {
+    title: "Lorem ipsum",
+    content: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae nisi culpa nobis molestiae, nesciunt corporis cupiditate commodi maxime modi impedit blanditiis, voluptates, nostrum consequuntur sunt! Perferendis quisquam numquam totam placeat.",
+    img: images["../../../../assets/Kodak_Tmax400_007.jpg"]
+  },
+  {
+    title: "Lorem ipsum",
+    content: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae nisi culpa nobis molestiae, nesciunt corporis cupiditate commodi maxime modi impedit blanditiis, voluptates, nostrum consequuntur sunt! Perferendis quisquam numquam totam placeat.",
+    img: images["../../../../assets/Kodak_Tmax400_007.jpg"]
+  }
+];
+</script>
+
+<style scoped></style>`
         },
         listDetails: [
           {
@@ -1069,13 +1122,13 @@ onBeforeUnmount(() => {
     ]
   },
   {
-    id: "tailwind???Note",
-    title: "？？？",
+    id: "tailwindSomeInterestingNote",
+    title: "一些酷元件",
     description: null,
     descriptionComponent: null,
     lists: [
       {
-        listTitle: "小工具們",
+        listTitle: "翻轉卡片",
         listSubtitle: null,
         listComponent: null,
         listCode: {
@@ -1087,18 +1140,123 @@ onBeforeUnmount(() => {
         },
         listDetails: [
           {
-            detailTitle: "ToDo List",
+            detailTitle: "一張翻轉卡片",
             detailSubtitle: null,
             detailContent: null,
-            // detailComponent: defineAsyncComponent(() =>
-            //   import("../../../components/WebNoteView/VuejsNoteView/VuejsSomeInterestingNote/ToDoApp.vue")
-            // ),
+            detailComponent: defineAsyncComponent(() =>
+              import("../../../components/WebNoteView/TailwindNoteView/TailwindSomeInterestingNote/TailwindDoubleSidedCard/TailwindDoubleSidedSingleCardDemo.vue")
+            ),
             detailCode: {
               terminalCode: null,
               htmlCode: null,
               cssCode: null,
               jsCode: null,
-              vueCode: null
+              vueCode: 
+`<template>
+  <div class="perspective-normal">
+    <div class="h-[240px] w-[160px] relative transform transform-3d active:rotate-y-180 duration-300 mx-auto">
+      <div class="h-full w-full absolute rounded-2xl shadow-xl backface-hidden cursor-pointer bg-[url('src/assets/Kodak_Tmax400_007.jpg')] bg-center bg-cover">
+        <p class="text-white mt-1 ml-1">正面</p>
+      </div>
+      <div class="h-full w-full absolute rounded-2xl shadow-xl backface-hidden rotate-y-180 bg-[url('src/assets/IMG_2073.jpg')] bg-center bg-cover">
+        <p class="text-white mt-1 ml-1">背面</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup></script>
+
+<style scoped></style>`
+            }
+          },
+          {
+            detailTitle: "多張翻轉卡片",
+            detailSubtitle: null,
+            detailContent: null,
+            detailComponent: defineAsyncComponent(() =>
+              import("../../../components/WebNoteView/TailwindNoteView/TailwindSomeInterestingNote/TailwindDoubleSidedCard/TailwindDoubleSidedMultipleCardsDemo.vue")
+            ),
+            detailCode: {
+              terminalCode: null,
+              htmlCode: null,
+              cssCode: null,
+              jsCode: null,
+              vueCode: 
+`<template>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-8">
+    <div
+      v-for="(card, index) in cards"
+      :key="index"
+      @mousedown="flipped[index] = true"
+      @mouseup="flipped[index] = false"
+      @mouseleave="flipped[index] = false"
+      @touchstart="flipped[index] = true"
+      @touchend="flipped[index] = false"
+      class="h-[240px] w-[160px] perspective-normal cursor-pointer mx-auto"
+    >
+      <div
+        class="relative h-full w-full duration-500 transform-3d"
+        :class="{ 'rotate-y-180': flipped[index] }"
+      >
+        <!-- 正面 -->
+        <div
+          class="absolute h-full w-full rounded-2xl shadow-xl backface-hidden bg-center bg-cover"` + "\n" +
+'          :style="`background-image: url(${card.frontImage})`"' + "\n" +
+`        >
+          <p class="text-white mt-1 ml-1">正面</p>
+        </div>
+        
+        <!-- 背面 -->
+        <div
+          class="absolute h-full w-full rounded-2xl shadow-xl backface-hidden bg-center bg-cover rotate-y-180"` + "\n" +
+'          :style="`background-image: url(${card.backImage})`"' + "\n" +
+`        >
+          <p class="text-white mt-1 ml-1">背面</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+// Vite 的批次導入工具（batch import），適合用來載入靜態資源
+const images = import.meta.glob("../../../../../assets/*", { eager: true, as: "url"});
+
+const cards = [
+  {
+    id: "001",
+    frontImage: images["../../../../../assets/Kodak_Tmax400_007.jpg"],
+    backImage: images["../../../../../assets/IMG_2073.jpg"]
+  },
+  {
+    id: "002",
+    frontImage: images["../../../../../assets/Kodak_Tmax400_007.jpg"],  // 有畫面
+    backImage: new URL("../../../../../assets/IMG_2073.jpg", import.meta.url).href
+  },
+  {
+    id: "003",
+    frontImage: images["../../../../../assets/Kodak_Tmax400_007.jpg"],  // 有畫面
+    backImage: images["../../../../../assets/IMG_2073.jpg"]
+  },
+  {
+    id: "004",
+    frontImage: images["../../../../../assets/Kodak_Tmax400_007.jpg"],  // 有畫面
+    backImage: images["../../../../../assets/IMG_2073.jpg"]
+  },
+  {
+    id: "005",
+    frontImage: images["../../../../../assets/Kodak_Tmax400_007.jpg"],  // 有畫面
+    backImage: images["../../../../../assets/IMG_2073.jpg"]
+  }
+];
+
+const flipped = ref(cards.map(() => false));
+</script>
+
+<style scoped></style>`
             }
           }
         ]
