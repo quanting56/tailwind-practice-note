@@ -654,6 +654,35 @@ const setDarkMode = () => {
     descriptionComponent: null,
     lists: [
       {
+        listTitle: "放在首頁的卡片",
+        listSubtitle: null,
+        listComponent: defineAsyncComponent(() =>
+          import("../../../components/WebNoteView/TailwindNoteView/TailwindCardNote/TailwindHomePageCardDemo.vue")
+        ),
+        listCode: {
+          terminalCode: null,
+          htmlCode: null,
+          cssCode: null,
+          jsCode: null,
+          vueCode: null
+        },
+        listDetails: [
+          {
+            detailTitle: null,
+            detailSubtitle: null,
+            detailContent: null,
+            detailComponent: null,
+            detailCode: {
+              terminalCode: null,
+              htmlCode: null,
+              cssCode: null,
+              jsCode: null,
+              vueCode: null
+            }
+          }
+        ]
+      },
+      {
         listTitle: "成員式卡片",
         listSubtitle: null,
         listComponent: defineAsyncComponent(() =>
