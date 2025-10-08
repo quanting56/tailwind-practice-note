@@ -1,1 +1,0 @@
-import{w as e}from"./index-BrCkmFTn.js";var t=e({default:()=>n}),n=`/tailwind-practice-note/assets/Kodak_Tmax400_007-DMbd02mD.jpg`;export{t as n,n as t};
