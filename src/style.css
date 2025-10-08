@@ -2,7 +2,7 @@
 /* @import url("https://..."); */
 
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));  /* Tailwind v4要使用dark模式需增加這一行 */
+@custom-variant dark (&:where(.dark, .dark *));  /* 要啟用Tailwind v4 dark樣式的class模式需增加這一行，否則會是media模式（依瀏覽器決定是否啟用dark樣式） */
 
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";

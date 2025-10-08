@@ -118,7 +118,7 @@
                   <div
                     v-if="detail.detailContent"
                     v-html="detail.detailContent"
-                    class="mt-4 leading-4"
+                    class="mt-4"
                   ></div>
 
                   <!-- 匯入小項元件 -->

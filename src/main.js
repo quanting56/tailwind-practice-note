@@ -2,11 +2,14 @@ import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
 
+
+// 使用Font-Awesome-icons
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faSun);
+library.add(faSun, faMoon);
+
 
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);
